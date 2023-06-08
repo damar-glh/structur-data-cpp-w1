@@ -10,7 +10,8 @@ Node *head = NULL, *tail = NULL, *print = NULL, *del = NULL, *newNode = NULL;
 bool isEmpty(){
 	return (head == NULL || tail == NULL);
 };
-void insertNode(int data){
+
+void insertFront(int data){
 	newNode = new Node;
 	newNode->data = data;
 	newNode->next = NULL;
@@ -26,6 +27,15 @@ void insertNode(int data){
 		tail = newNode;
 	}
 };
+
+void insertMid(int data){
+	
+};
+
+void insertEnd(int data){
+	
+};
+
 void deleteFromFront(){
 	int simpan;
 	if (head != NULL){
@@ -45,12 +55,21 @@ void deleteFromFront(){
 		cout << "\n Linked list kosonh penghapusan tidak dilakukan \n";
 	}
 };
+
+void deleteFromMid(){
+	
+};
+
+void deleteFromEnd(){
+	
+}
+
 void printNode(){
 	print = head;
 	if(head != NULL){
 		cout << " Isi Linked List  : ";
 		while(print != NULL){
-			cout << print->data << "<= =>";
+			cout << print->data << "<=>";
 			print = print->next;
 		}
 	}  else {
@@ -65,26 +84,30 @@ int main(){
 		cout << " DOUBLE LINKED LIST NON CIRCULAR \n";
 		cout << "----------------------------------- \n";
 		cout << " Menu : \n";
-		cout << " 1. Menambah Node \n";
-		cout << " 2. Menghapus Node dari depan \n";
-		cout << " 3. Menampilkan Node \n";
-		cout << " 4. Selesai \n";
+		cout << " 1. Insert Node From Front \n";
+		cout << " 2. Insert Node From Mid \n";
+		cout << " 3. Insert Node From End \n";
+		cout << " 4. Delete Node From Front \n";
+		cout << " 5. Delete Node From Mid \n";
+		cout << " 6. Delete Node From End \n";
+		cout << " 7. Printf Node \n";
+		cout << " 8. Finish \n";
 		cout << "----------------------------------- \n";
-		cout << " Masukan pilihan anda : ";
+		cout << " Enter your choice : ";
 		cin >> choice;
 		switch(choice){
 			case 1 :
-				cout << " Masukan data : ";
+				cout << " Enter your data : ";
 				cin >> data;
-				insertNode(data);
-				break;
-			case 2 :
-				deleteFromFront();
-				break;
-			case 3 :
-				printNode();
+				insertFront(data);
 				break;
 			case 4 :
+				deleteFromFront();
+				break;
+			case 7 :
+				printNode();
+				break;
+			case 8 :
 			    return 0;
 				break;
 			default :
