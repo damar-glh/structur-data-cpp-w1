@@ -193,17 +193,17 @@ menu:
     cin >> choice;
     switch (choice) {
         case 1:
-            cout << "Masukan data: ";
+            cout << " Masukan data: ";
             cin >> data;
             insertFront(data);
             break;
         case 2:
-            cout << "Masukan data: ";
+            cout << " Masukan data: ";
             cin >> data;
             insertMid(data);
             break;
         case 3:
-            cout << "Masukan data: ";
+            cout << " Masukan data: ";
             cin >> data;
             insertEnd(data);
             break;
