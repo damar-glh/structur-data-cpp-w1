@@ -9,5 +9,5 @@
 <li> Searching
 <li> LingkedList
 <li> Double LingkedList
-<li> Graph
+<a href = "https://github.com/damar-glh/structure-data-cpp/tree/main/Week_10"><li> Graph </a>
 <h6> --- damaraaa. ☔<h6>
