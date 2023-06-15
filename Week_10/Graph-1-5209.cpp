@@ -1,7 +1,6 @@
 #include <iostream>
 using namespace std;
 
-
 const int MAX_SIZE = 5;
 
 int matrix[MAX_SIZE][MAX_SIZE];
