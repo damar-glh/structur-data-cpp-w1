@@ -61,11 +61,33 @@ void print() {
 }
 
 int main() {
-    cout << " temp of vertex: ";
-    cin >> temp_vertex;
-    buildMatrix();
-    insertMatrix();
-    traversingGraph();
-    print();
-    return 0;
+	int choice;
+	menu :
+	cout << "============ Graph ============== \n\n";
+	cout << " Menu Graph : \n";
+	cout << " 1. Undirected Graph \n";
+	cout << " 2. Directed Graph \n";
+	cout << " 3. Weigted Graph \n";
+	cout << " 4. Selesai \n";
+	cout << "--------------------------------- \n";
+	cout << " Masukan pilihan anda : "; cin >> choice;
+	switch(choice){
+		case 1 :
+			system("cls");
+			cout << "======= Undirected Graph ========= \n";
+			break;
+		case 2 :
+			system("cls");
+			cout << "======== Directed Graph ========= \n";
+			break;
+		case 3 :
+			system("cls");
+			cout << "======== Weigted Graph ========== \n";
+			break;
+		case 4 :
+			return 0;
+        default:
+            cout << "Pilihan tidak tersedia!\n";
+            goto menu;
+	}
 }

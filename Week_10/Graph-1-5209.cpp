@@ -17,12 +17,12 @@ void buildMatrix() {
 
 void insertMatrix() {
     int temp_edge, source, objective;
-    cout << " temp of edges: ";
+    cout << " Jumlah tepi: ";
     cin >> temp_edge;
     for (int i = 1; i <= temp_edge; i++) {
-        cout << " source vertex " << i << ": ";
+        cout << " Vertex sumber " << i << ": ";
         cin >> source;
-        cout << " objective vertex " << i << ": ";
+        cout << " Vertex tujuan " << i << ": ";
         cin >> objective;
         matrix[source][objective] = 1;
         matrix[objective][source] = 1;
@@ -53,14 +53,14 @@ void traversingGraph() {
 
 void print() {
     if (nolsemua == true) {
-        cout << " Graph not connected." << endl;
+        cout << " Graph tidak terhubung." << endl;
     } else {
-        cout << " Graph connected." << endl;
+        cout << " Graph terhubung." << endl;
     }
 }
 
 int main() {
-    cout << " temp of vertex: ";
+    cout << " Jumlah vertex: ";
     cin >> temp_vertex;
     buildMatrix();
     insertMatrix();
