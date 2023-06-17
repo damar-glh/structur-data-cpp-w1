@@ -5,6 +5,7 @@ const int MAX_SIZE = 100;
 
 int matrix[MAX_SIZE][MAX_SIZE];
 int temp_vertex;
+char name_vertex[MAX_SIZE];
 bool nolsemua;
 
 void buildMatrix() {
@@ -17,9 +18,17 @@ void buildMatrix() {
 
 void insertMatrixUndirected() {
     int temp_edge, source, objective;
+    cout << " Jumlah vertex: ";
+    cin >> temp_vertex;
     cout << " Jumlah tepi: ";
     cin >> temp_edge;
-    for (int i = 1; i <= temp_edge; i++) {
+    cout << "--------------------------------- \n";
+    for (int i = 1; i <= temp_vertex; i++){
+    	cout << " Nama Vertex - [" << i << "] : ";
+    	cin >> name_vertex[i];
+	}
+	cout << "--------------------------------- \n";
+	for (int i = 1; i <= temp_edge; i++) {
         cout << " Vertex sumber " << i << ": ";
         cin >> source;
         cout << " Vertex tujuan " << i << ": ";
@@ -31,8 +40,16 @@ void insertMatrixUndirected() {
 
 void insertMatrixDirected() {
     int temp_edge, source, objective;
+    cout << " Jumlah vertex: ";
+    cin >> temp_vertex;
     cout << " Jumlah tepi: ";
     cin >> temp_edge;
+    cout << "--------------------------------- \n";
+    for (int i = 1; i <= temp_vertex; i++){
+    	cout << " Nama Vertex - [" << i << "] : ";
+    	cin >> name_vertex[i];
+	}
+	cout << "--------------------------------- \n";
     for (int i = 1; i <= temp_edge; i++) {
         cout << " Vertex sumber " << i << ": ";
         cin >> source;
@@ -41,6 +58,7 @@ void insertMatrixDirected() {
         matrix[source][objective] = 1;
     }
 }
+
 
 void insertMatrixWeighted() {
     int temp_edge, source, objective, weight;
@@ -81,11 +99,19 @@ void traversingGraph() {
 }
 
 void print() {
-    if (nolsemua) {
+    if (nolsemua == true) {
         cout << " Graph not connected." << endl;
     } else {
-        cout << " Graph connected." << endl;
+    	cout << "--------------------------------- \n";
+        cout << " Garis yang dapat dibentuk : ";
+        for (int i = 1; i <= temp_vertex; i++) {
+        for (int j = 1; j <= temp_vertex; j++) {
+            if (matrix[i][j] != 0) {
+                cout << name_vertex[i] << name_vertex[j] << ",";
+            }
+        }
     }
+  }
 }
 
 int main() {
@@ -105,8 +131,6 @@ int main() {
         case 1:
             system("cls");
             cout << "======= Undirected Graph ========= \n";
-            cout << " Jumlah vertex: ";
-            cin >> temp_vertex;
             buildMatrix();
             insertMatrixUndirected();
             traversingGraph();
@@ -115,8 +139,6 @@ int main() {
         case 2:
             system("cls");
             cout << "======= Directed Graph ========= \n";
-            cout << " Jumlah vertex: ";
-            cin >> temp_vertex;
             buildMatrix();
             insertMatrixDirected();
             traversingGraph();
@@ -125,8 +147,6 @@ int main() {
         case 3:
             system("cls");
             cout << "======= Weighted Graph ========= \n";
-            cout << " Jumlah vertex: ";
-            cin >> temp_vertex;
             buildMatrix();
             insertMatrixWeighted();
             traversingGraph();
