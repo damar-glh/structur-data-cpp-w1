@@ -1,0 +1,1 @@
+nolsemua akan diubah menjadi false jika ditemukan setidaknya satu tepi yang terhubung antara vertex. Jika traversal selesai dan nolsemua masih bernilai true, itu berarti tidak ada tepi yang terhubung antara vertex, sehingga graf dianggap tidak terhubung.
