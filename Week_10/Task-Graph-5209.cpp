@@ -98,7 +98,7 @@ void traversingGraph() {
     }
 }
 
-void print() {
+void printUndigraph() {
     if (nolsemua == true) {
         cout << " Graph not connected." << endl;
     } else {
@@ -110,6 +110,23 @@ void print() {
                 cout << name_vertex[i] << name_vertex[j] << ",";
             }
         }
+    }
+  }
+}
+
+void printDigraph(){
+	if (nolsemua == false) {
+        cout << " Graph not connected." << endl;
+    } else {
+    	cout << "--------------------------------- \n";
+        cout << " Garis yang dapat dibentuk : ";
+        for (int i = 1; i <= temp_vertex; i++) {
+        for (int j = 1; j <= temp_vertex; j++) {
+            if (matrix[i][j] != 0) {
+                cout << name_vertex[i] << "->"<< name_vertex[j] << ",";
+            }
+        }
+    
     }
   }
 }
@@ -134,7 +151,7 @@ int main() {
             buildMatrix();
             insertMatrixUndirected();
             traversingGraph();
-            print();
+            printUndigraph();
             break;
         case 2:
             system("cls");
@@ -142,7 +159,7 @@ int main() {
             buildMatrix();
             insertMatrixDirected();
             traversingGraph();
-            print();
+            printDigraph();
             break;
         case 3:
             system("cls");
@@ -150,7 +167,7 @@ int main() {
             buildMatrix();
             insertMatrixWeighted();
             traversingGraph();
-            print();
+//            print();
             break;
         case 4:
             return 0;
