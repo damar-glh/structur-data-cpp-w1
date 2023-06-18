@@ -33,6 +33,7 @@ void insertMatrixUndirected() {
         cin >> source;
         cout << " Vertex tujuan " << i << ": ";
         cin >> objective;
+        cout << "--------------------------------- \n";
         matrix[source][objective] = 1;
         matrix[objective][source] = 1;
     }
@@ -55,6 +56,7 @@ void insertMatrixDirected() {
         cin >> source;
         cout << " Vertex tujuan " << i << ": ";
         cin >> objective;
+        cout << "--------------------------------- \n";
         matrix[source][objective] = 1;
     }
 }
@@ -62,8 +64,16 @@ void insertMatrixDirected() {
 
 void insertMatrixWeighted() {
     int temp_edge, source, objective, weight;
+    cout << " Jumlah vertex: ";
+    cin >> temp_vertex;
     cout << " Jumlah tepi: ";
     cin >> temp_edge;
+    cout << "--------------------------------- \n";
+    for (int i = 1; i <= temp_vertex; i++){
+    	cout << " Nama Vertex - [" << i << "] : ";
+    	cin >> name_vertex[i];
+	}
+	cout << "--------------------------------- \n";
     for (int i = 1; i <= temp_edge; i++) {
         cout << " Vertex sumber " << i << ": ";
         cin >> source;
@@ -72,7 +82,7 @@ void insertMatrixWeighted() {
         cout << " Weight " << i << ": ";
         cin >> weight;
         matrix[source][objective] = weight;
-        matrix[objective][source] = weight;
+        cout << "--------------------------------- \n";
     }
 }
 
@@ -98,11 +108,10 @@ void traversingGraph() {
     }
 }
 
-void printUndigraph() {
+void printUndirected() {
     if (nolsemua == true) {
         cout << " Graph not connected." << endl;
     } else {
-    	cout << "--------------------------------- \n";
         cout << " Garis yang dapat dibentuk : ";
         for (int i = 1; i <= temp_vertex; i++) {
         for (int j = 1; j <= temp_vertex; j++) {
@@ -114,7 +123,7 @@ void printUndigraph() {
   }
 }
 
-void printDigraph(){
+void printDirected(){
 	if (nolsemua == false) {
         cout << " Graph not connected." << endl;
     } else {
@@ -131,10 +140,38 @@ void printDigraph(){
   }
 }
 
+void printWeighted(){
+	int totalWeight = 0;
+	if (nolsemua == false){
+		cout << " Graph not connected." << endl;
+	} else {
+        cout << " Garis yang dapat dibentuk : ";
+        for (int i = 1; i <= temp_vertex; i++) {
+        for (int j = 1; j <= temp_vertex; j++) {
+            if (matrix[i][j] != 0) {
+                cout << name_vertex[i] << name_vertex[j] << ",";
+            }
+        }
+    }
+    cout << endl;
+    cout << "--------------------------------- \n";
+    for(int i = 1; i <= temp_vertex; i++){
+    	for(int j = 1; j <= temp_vertex;j++ ){
+    		if (matrix[i][j] != 0){
+    			cout << " Simpul " << name_vertex[i] <<" dengan Simpul " 
+				<< name_vertex[j] << " : " << matrix[i][j] << endl;
+			}
+			totalWeight += matrix[i][j];
+		}
+	}
+	cout << "\n Jarak panjang : " << totalWeight;
+  }
+}
+
 int main() {
     int choice;
     menu:
-    cout << "============ Graph ============== \n\n";
+    cout << "\n============ Graph ============== \n\n";
     cout << " Menu Graph : \n";
     cout << " 1. Undirected Graph \n";
     cout << " 2. Directed Graph \n";
@@ -151,7 +188,8 @@ int main() {
             buildMatrix();
             insertMatrixUndirected();
             traversingGraph();
-            printUndigraph();
+            printUndirected();
+            goto menu;
             break;
         case 2:
             system("cls");
@@ -159,7 +197,7 @@ int main() {
             buildMatrix();
             insertMatrixDirected();
             traversingGraph();
-            printDigraph();
+            printDirected();
             break;
         case 3:
             system("cls");
@@ -167,7 +205,7 @@ int main() {
             buildMatrix();
             insertMatrixWeighted();
             traversingGraph();
-//            print();
+            printWeighted();
             break;
         case 4:
             return 0;
