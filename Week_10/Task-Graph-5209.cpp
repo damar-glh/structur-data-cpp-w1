@@ -127,7 +127,6 @@ void printDirected(){
 	if (nolsemua == false) {
         cout << " Graph not connected." << endl;
     } else {
-    	cout << "--------------------------------- \n";
         cout << " Garis yang dapat dibentuk : ";
         for (int i = 1; i <= temp_vertex; i++) {
         for (int j = 1; j <= temp_vertex; j++) {
@@ -198,7 +197,8 @@ int main() {
             insertMatrixDirected();
             traversingGraph();
             printDirected();
-            break;
+            goto menu;
+			break;
         case 3:
             system("cls");
             cout << "======= Weighted Graph ========= \n";
@@ -206,6 +206,7 @@ int main() {
             insertMatrixWeighted();
             traversingGraph();
             printWeighted();
+            goto menu;
             break;
         case 4:
             return 0;
