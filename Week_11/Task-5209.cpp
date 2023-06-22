@@ -2,20 +2,24 @@
 using namespace std;
 
 struct node {
-	char data;
-	node *left;
-	node *right;
-}Node;
-node *root = NULL;
-void addNode(node **root, char isi){
-	if ((*root) == NULL){
-		node *baru;
-		baru = new node;
-		baru->data = isi;
-		baru->left = NULL;
-		baru->right = NULL;
-		(*root) = baru;
-	}
+    char data;
+    node* left;
+    node* right;
+};
+
+node* createNode(char isi) {
+    node* newNode = new node;
+    newNode->data = isi;
+    newNode->left = NULL;
+    newNode->right = NULL;
+    return newNode;
+}
+
+void addNode(node** root, char isi) {
+    if ((*root) == NULL) {
+        node* baru = createNode(isi);
+        (*root) = baru;
+    }
 }
 
 void preorder(node* root) {
@@ -42,28 +46,63 @@ void postorder(node* root) {
     }
 }
 
+void printTree(node* root, int space) {
+	if (root == NULL){
+		return;
+	}
+	space += 5;
+	printTree(root->right, space);
+	cout << endl;
+	for (int i = 5; i < space; i++){
+		cout << " ";
+	}
+	cout << "|";
+	for (int i = 0; i < 3; i++){
+		cout << "-";
+	}
+	cout << root->data;
+	printTree(root->left, space);
+}
 
-int main(){
-	char isinya;
-	printf("\n         Posisi awal binary tree :   \n\n");
-	 
-	// level 0
-	addNode(&root, isinya = 'A'); 
-	// level 1
-	addNode(&root->left, isinya = 'M');
-	addNode(&root->right, isinya = 'I');
-	// level 2 
-	addNode(&root->left->left, isinya = 'K'); 
-	addNode(&root->right->left, isinya = 'J');
-	addNode(&root->right->right, isinya = 'Z'); 
-	// level 3
-	addNode(&root->left->left->left, isinya = 'O');
-	addNode(&root->left->left->right, isinya = 'M');
-	// level 4
-	addNode(&root->left->left->left->left, isinya = 'Y');
-	addNode(&root->left->left->left->right, isinya = 'K');
-	
-	printf("\n Preorder  : "); preorder(root);
+
+int main() {
+    node* root = NULL;
+
+    // level 0
+    addNode(&root, 'A');
+    // level 1
+    addNode(&root->left, 'M');
+    addNode(&root->right, 'I');
+    // level 2
+    addNode(&root->left->left, 'K');
+    addNode(&root->right->left, 'J');
+    addNode(&root->right->right, 'Z');
+    // level 3
+    addNode(&root->left->left->left, 'O');
+    addNode(&root->left->left->right, 'M');
+    // level 4
+    addNode(&root->left->left->left->left, 'Y');
+    addNode(&root->left->left->left->right, 'K');
+    
+    
+    cout << " \t Posisi Awal Binary Tree : \n\n";
+	cout << " Output Horizontal :";
+    printTree(root, 0);
+    cout << "\n\n Output Vertikal :\n";
+    cout << "             A" << endl;
+    cout << "            / \\" << endl;
+    cout << "           M   I" << endl;
+    cout << "          /   / \\" << endl;
+    cout << "         K   J   Z" << endl;
+    cout << "        / \\" << endl;
+    cout << "       O   M" << endl;
+    cout << "      / \\" << endl;
+    cout << "     Y   K" << endl; 
+    
+    printf("\n Preorder  : "); preorder(root);
 	printf("\n Inorder   : "); inorder(root);
 	printf("\n Postorder : "); postorder(root);
+
+    return 0;
 }
+
