@@ -5,7 +5,7 @@ struct node {
 	char data;
 	node *left;
 	node *right;
-};
+}Node;
 node *root = NULL;
 void addNode(node **root, char isi){
 	if ((*root) == NULL){
@@ -17,6 +17,31 @@ void addNode(node **root, char isi){
 		(*root) = baru;
 	}
 }
+
+void preorder(node* root) {
+    if (root != NULL) {
+        cout << root->data << " ";
+        preorder(root->left);
+        preorder(root->right);
+    }
+}
+
+void inorder(node* root) {
+    if (root != NULL) {
+        inorder(root->left);
+        cout << root->data << " ";
+        inorder(root->right);
+    }
+}
+
+void postorder(node* root) {
+    if (root != NULL) {
+        postorder(root->left);
+        postorder(root->right);
+        cout << root->data << " ";
+    }
+}
+
 
 int main(){
 	char isinya;
@@ -30,9 +55,9 @@ int main(){
 	// level 2 
 	addNode(&root->left->left, isinya = 'K'); 
 	addNode(&root->right->right, isinya = 'Z'); 
-	addNode(&root->right->right, isinya = 'J');
+	addNode(&root->right->right->left, isinya = 'J');
 	
-	printf("\n Preorder  : ");
-	printf("\n Inorder   : ");
-	printf("\n Postorder : "); 
+	printf("\n Preorder  : "); preorder(root);
+	printf("\n Inorder   : "); inorder(root);
+	printf("\n Postorder : "); postorder(root);
 }
