@@ -54,8 +54,8 @@ int main(){
 	addNode(&root->right, isinya = 'I');
 	// level 2 
 	addNode(&root->left->left, isinya = 'K'); 
-	addNode(&root->right->right, isinya = 'Z'); 
 	addNode(&root->right->left, isinya = 'J');
+	addNode(&root->right->right, isinya = 'Z'); 
 	// level 3
 	addNode(&root->left->left->left, isinya = 'O');
 	addNode(&root->left->left->right, isinya = 'M');
